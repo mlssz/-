@@ -1,12 +1,12 @@
--- 2017-1-23 14:35 create by oeli
--- 2017-1-24 20:22 drop by mephis
--- 2017-1-24 20:22 create by mephis
-
 BEGIN;
 --
 -- Create model Advertisement
 --
 CREATE TABLE `advertisement` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `info` varchar(128) NOT NULL, `fee` double precision NOT NULL, `time` date NOT NULL);
+--
+-- Create model Line
+--
+CREATE TABLE `line` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `startplace` varchar(32) NULL, `endplace` varchar(32) NULL, `center` varchar(256) NULL, `createtime` date NULL, `remark` varchar(128) NOT NULL);
 --
 -- Create model Orders
 --
@@ -22,7 +22,7 @@ CREATE TABLE `truck` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `no` var
 --
 -- Create model User
 --
-CREATE TABLE `user` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `account` char(11) NOT NULL, `name` varchar(128) NULL, `signup_time` date NOT NULL, `token` varchar(64) NULL, `type` tinyint NOT NULL);
+CREATE TABLE `user` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `account` char(11) NOT NULL, `name` varchar(128) NULL, `pre_login_time` date NOT NULL, `signup_time` date NOT NULL, `token` varchar(64) NULL, `type` tinyint NOT NULL);
 --
 -- Create model Lessee
 --
@@ -56,11 +56,23 @@ ALTER TABLE `orders` ALTER COLUMN `lessee` DROP DEFAULT;
 --
 ALTER TABLE `orders` ADD COLUMN `rental` integer NOT NULL;
 ALTER TABLE `orders` ALTER COLUMN `rental` DROP DEFAULT;
+--
+-- Add field lessee to line
+--
+ALTER TABLE `line` ADD COLUMN `lessee` integer NULL;
+ALTER TABLE `line` ALTER COLUMN `lessee` DROP DEFAULT;
+--
+-- Add field rental to line
+--
+ALTER TABLE `line` ADD COLUMN `rental` integer NOT NULL;
+ALTER TABLE `line` ALTER COLUMN `rental` DROP DEFAULT;
 ALTER TABLE `lessee` ADD CONSTRAINT `lessee_id_f302d73c_fk_user_id` FOREIGN KEY (`id`) REFERENCES `user` (`id`);
 ALTER TABLE `rental` ADD CONSTRAINT `rental_id_2783c06e_fk_user_id` FOREIGN KEY (`id`) REFERENCES `user` (`id`);
 ALTER TABLE `service` ADD CONSTRAINT `service_customer_63f90d6c_fk_user_id` FOREIGN KEY (`customer`) REFERENCES `user` (`id`);
 ALTER TABLE `service` ADD CONSTRAINT `service_offer_71ceaea7_fk_auth_user_id` FOREIGN KEY (`offer`) REFERENCES `auth_user` (`id`);
 ALTER TABLE `truck` ADD CONSTRAINT `truck_lessee_6afe9da3_fk_lessee_id` FOREIGN KEY (`lessee`) REFERENCES `lessee` (`id`);
-ALTER TABLE `orders` ADD CONSTRAINT `orders_lessee_16123ec4_fk_lessee_id` FOREIGN KEY (`lessee`) REFERENCES `lessee` (`id`);
-ALTER TABLE `orders` ADD CONSTRAINT `orders_rental_f069b145_fk_rental_id` FOREIGN KEY (`rental`) REFERENCES `rental` (`id`);
+ALTER TABLE `orders` ADD CONSTRAINT `orders_lessee_5966d8d7_fk_lessee_id` FOREIGN KEY (`lessee`) REFERENCES `lessee` (`id`);
+ALTER TABLE `orders` ADD CONSTRAINT `orders_rental_613f13c3_fk_rental_id` FOREIGN KEY (`rental`) REFERENCES `rental` (`id`);
+ALTER TABLE `line` ADD CONSTRAINT `line_lessee_34f44738_fk_lessee_id` FOREIGN KEY (`lessee`) REFERENCES `lessee` (`id`);
+ALTER TABLE `line` ADD CONSTRAINT `line_rental_53529158_fk_rental_id` FOREIGN KEY (`rental`) REFERENCES `rental` (`id`);
 COMMIT;

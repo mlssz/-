@@ -1,16 +1,17 @@
 ## user
 
 ```org
-+-------------|--------------|------|-----|---------|----------------+
-| Field       | Type         | Null | Key | Default | Extra          |
-+-------------|--------------|------|-----|---------|----------------+
-| id          | int(11)      | NO   | PRI | NULL    | auto_increment |
-| account     | char(11)     | NO   |     | NULL    |                |
-| name        | varchar(128) | YES  |     | NULL    |                |
-| signup_time | date         | NO   |     | NULL    |                |
-| token       | varchar(64)  | YES  |     | NULL    |                |
-| type        | tinyint(4)   | NO   |     | NULL    |                |
-+-------------|--------------|------|-----|---------|----------------+
++----------------|--------------|------|-----|---------|----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------|--------------|------|-----|---------|----------------+
+| id             | int(11)      | NO   | PRI | NULL    | auto_increment |
+| account        | char(11)     | NO   |     | NULL    |                |
+| name           | varchar(128) | YES  |     | NULL    |                |
+| pre_login_time | date         | NO   |     | NULL    |                |
+| signup_time    | date         | NO   |     | NULL    |                |
+| token          | varchar(64)  | YES  |     | NULL    |                |
+| type           | tinyint(4)   | NO   |     | NULL    |                |
++----------------|--------------|------|-----|---------|----------------+
 ```
 
 ## lessee
@@ -113,4 +114,21 @@
 | is_active    | tinyint(1)   | NO   |     | NULL    |                |
 | date_joined  | datetime     | NO   |     | NULL    |                |
 +--------------|--------------|------|-----|---------|----------------+
+```
+
+## line
+
+```org
++------------|--------------|------|-----|---------|----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------|--------------|------|-----|---------|----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| startplace | varchar(32)  | YES  |     | NULL    |                |
+| endplace   | varchar(32)  | YES  |     | NULL    |                |
+| center     | varchar(256) | YES  |     | NULL    |                |
+| createtime | date         | YES  |     | NULL    |                |
+| remark     | varchar(128) | NO   |     | NULL    |                |
+| lessee     | int(11)      | YES  | MUL | NULL    |                |
+| rental     | int(11)      | NO   | MUL | NULL    |                |
++------------|--------------|------|-----|---------|----------------+
 ```
