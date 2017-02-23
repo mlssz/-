@@ -1,17 +1,17 @@
 ## user
 
 ```org
-+----------------|--------------|------|-----|---------|----------------+
-| Field          | Type         | Null | Key | Default | Extra          |
-+----------------|--------------|------|-----|---------|----------------+
-| id             | int(11)      | NO   | PRI | NULL    | auto_increment |
-| account        | char(11)     | NO   |     | NULL    |                |
-| name           | varchar(128) | YES  |     | NULL    |                |
-| pre_login_time | date         | NO   |     | NULL    |                |
-| signup_time    | date         | NO   |     | NULL    |                |
-| token          | varchar(64)  | YES  |     | NULL    |                |
-| type           | tinyint(4)   | NO   |     | NULL    |                |
-+----------------|--------------|------|-----|---------|----------------+
++----------------|--------------|------|-----|-------------------|----------------+
+| Field          | Type         | Null | Key | Default           | Extra          |
++----------------|--------------|------|-----|-------------------|----------------+
+| id             | int(11)      | NO   | PRI | NULL              | auto_increment |
+| account        | char(11)     | NO   |     | NULL              |                |
+| name           | varchar(128) | YES  |     | 无名              |                |
+| pre_login_time | datetime     | NO   |     | CURRENT_TIMESTAMP |                |
+| signup_time    | datetime     | NO   |     | CURRENT_TIMESTAMP |                |
+| token          | varchar(64)  | YES  |     | NULL              |                |
+| type           | tinyint(4)   | NO   |     | 0                 |                |
++----------------|--------------|------|-----|-------------------|----------------+
 ```
 
 ## lessee
@@ -22,7 +22,7 @@
 +----------|--------------|------|-----|---------|-------+
 | id       | int(11)      | NO   | PRI | NULL    |       |
 | position | varchar(128) | YES  |     | NULL    |       |
-| score    | int(11)      | NO   |     | NULL    |       |
+| score    | int(11)      | NO   |     | 0       |       |
 | realname | varchar(128) | NO   |     | NULL    |       |
 | ci       | varchar(18)  | YES  |     | NULL    |       |
 +----------|--------------|------|-----|---------|-------+
@@ -36,45 +36,45 @@
 +----------|--------------|------|-----|---------|-------+
 | id       | int(11)      | NO   | PRI | NULL    |       |
 | position | varchar(128) | YES  |     | NULL    |       |
-| score    | int(11)      | NO   |     | NULL    |       |
+| score    | int(11)      | NO   |     | 0       |       |
 +----------|--------------|------|-----|---------|-------+
 ```
 
 ## orders
 
 ```org
-+------------|--------------|------|-----|---------|----------------+
-| Field      | Type         | Null | Key | Default | Extra          |
-+------------|--------------|------|-----|---------|----------------+
-| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
-| starttime  | date         | NO   |     | NULL    |                |
-| endtime    | date         | YES  |     | NULL    |                |
-| startplace | varchar(32)  | YES  |     | NULL    |                |
-| endplace   | varchar(32)  | YES  |     | NULL    |                |
-| fee        | double       | NO   |     | NULL    |                |
-| score      | int(11)      | NO   |     | NULL    |                |
-| accepttime | date         | YES  |     | NULL    |                |
-| finishtime | date         | YES  |     | NULL    |                |
-| remark     | varchar(256) | NO   |     | NULL    |                |
-| status     | tinyint(4)   | NO   |     | NULL    |                |
-| lessee     | int(11)      | YES  | MUL | NULL    |                |
-| rental     | int(11)      | NO   | MUL | NULL    |                |
-+------------|--------------|------|-----|---------|----------------+
++------------|--------------|------|-----|-------------------|----------------+
+| Field      | Type         | Null | Key | Default           | Extra          |
++------------|--------------|------|-----|-------------------|----------------+
+| id         | int(11)      | NO   | PRI | NULL              | auto_increment |
+| starttime  | datetime     | NO   |     | CURRENT_TIMESTAMP |                |
+| endtime    | datetime     | YES  |     | NULL              |                |
+| startplace | varchar(32)  | YES  |     | NULL              |                |
+| endplace   | varchar(32)  | YES  |     | NULL              |                |
+| fee        | double       | NO   |     | 0                 |                |
+| score      | int(11)      | NO   |     | 0                 |                |
+| accepttime | datetime     | YES  |     | NULL              |                |
+| finishtime | datetime     | YES  |     | NULL              |                |
+| remark     | varchar(256) | NO   |     | NULL              |                |
+| status     | tinyint(4)   | NO   |     | 0                 |                |
+| lessee     | int(11)      | YES  | MUL | NULL              |                |
+| rental     | int(11)      | NO   | MUL | NULL              |                |
++------------|--------------|------|-----|-------------------|----------------+
 ```
 
 ## service
 
 ```org
-+----------|--------------|------|-----|---------|----------------+
-| Field    | Type         | Null | Key | Default | Extra          |
-+----------|--------------|------|-----|---------|----------------+
-| id       | int(11)      | NO   | PRI | NULL    | auto_increment |
-| time     | date         | NO   |     | NULL    |                |
-| remark   | varchar(512) | NO   |     | NULL    |                |
-| score    | int(11)      | NO   |     | NULL    |                |
-| customer | int(11)      | NO   | MUL | NULL    |                |
-| offer    | int(11)      | NO   | MUL | NULL    |                |
-+----------|--------------|------|-----|---------|----------------+
++----------|--------------|------|-----|-------------------|----------------+
+| Field    | Type         | Null | Key | Default           | Extra          |
++----------|--------------|------|-----|-------------------|----------------+
+| id       | int(11)      | NO   | PRI | NULL              | auto_increment |
+| time     | datetime     | NO   |     | CURRENT_TIMESTAMP |                |
+| remark   | varchar(512) | NO   |     | NULL              |                |
+| score    | int(11)      | NO   |     | -1                |                |
+| customer | int(11)      | NO   | MUL | NULL              |                |
+| offer    | int(11)      | NO   | MUL | NULL              |                |
++----------|--------------|------|-----|-------------------|----------------+
 ```
 
 ## truck
@@ -85,11 +85,11 @@
 +-----------|--------------|------|-----|---------|----------------+
 | id        | int(11)      | NO   | PRI | NULL    | auto_increment |
 | no        | varchar(18)  | NO   |     | NULL    |                |
-| load      | double       | NO   |     | NULL    |                |
-| width     | double       | NO   |     | NULL    |                |
-| heigth    | double       | NO   |     | NULL    |                |
-| length    | double       | NO   |     | NULL    |                |
-| type      | tinyint(4)   | NO   |     | NULL    |                |
+| load      | double       | NO   |     | 0       |                |
+| width     | double       | NO   |     | 0       |                |
+| heigth    | double       | NO   |     | 0       |                |
+| length    | double       | NO   |     | 0       |                |
+| type      | tinyint(4)   | NO   |     | 0       |                |
 | modelinfo | varchar(256) | YES  |     | NULL    |                |
 | remark    | varchar(32)  | YES  |     | NULL    |                |
 | lessee    | int(11)      | NO   | MUL | NULL    |                |
@@ -104,15 +104,15 @@
 +--------------|--------------|------|-----|---------|----------------+
 | id           | int(11)      | NO   | PRI | NULL    | auto_increment |
 | password     | varchar(128) | NO   |     | NULL    |                |
-| last_login   | datetime     | YES  |     | NULL    |                |
-| is_superuser | tinyint(1)   | NO   |     | NULL    |                |
+| last_login   | datetime(6)  | YES  |     | NULL    |                |
+| is_superuser | tinyint(1)   | NO   |     | 0       |                |
 | username     | varchar(150) | NO   | UNI | NULL    |                |
 | first_name   | varchar(30)  | NO   |     | NULL    |                |
 | last_name    | varchar(30)  | NO   |     | NULL    |                |
 | email        | varchar(254) | NO   |     | NULL    |                |
-| is_staff     | tinyint(1)   | NO   |     | NULL    |                |
-| is_active    | tinyint(1)   | NO   |     | NULL    |                |
-| date_joined  | datetime     | NO   |     | NULL    |                |
+| is_staff     | tinyint(1)   | NO   |     | 0       |                |
+| is_active    | tinyint(1)   | NO   |     | 1       |                |
+| date_joined  | datetime(6)  | NO   |     | NULL    |                |
 +--------------|--------------|------|-----|---------|----------------+
 ```
 
