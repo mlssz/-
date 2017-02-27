@@ -26,11 +26,11 @@ CREATE TABLE `user` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `account`
 --
 -- Create model Lessee
 --
-CREATE TABLE `lessee` (`id` integer NOT NULL PRIMARY KEY, `position` varchar(128) NULL, `score` integer NOT NULL DEFAULT 0, `realname` varchar(128) NOT NULL, `ci` varchar(18) NULL);
+CREATE TABLE `lessee` (`id` integer NOT NULL PRIMARY KEY, `position_x` double precision NOT NULL DEFAULT 0, `position_y` double precision NOT NULL DEFAULT 0, `score` integer NOT NULL DEFAULT 0, `realname` varchar(128) NOT NULL, `ci` varchar(18) NULL);
 --
 -- Create model Rental
 --
-CREATE TABLE `rental` (`id` integer NOT NULL PRIMARY KEY, `position` varchar(128) NULL, `score` integer NOT NULL DEFAULT 0);
+CREATE TABLE `rental` (`id` integer NOT NULL PRIMARY KEY, `position_x` double precision NOT NULL DEFAULT 0, `position_y` double precision NOT NULL DEFAULT 0, `score` integer NOT NULL DEFAULT 0);
 --
 -- Add field customer to service
 --
