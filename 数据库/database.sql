@@ -74,5 +74,9 @@ ALTER TABLE `truck` ADD CONSTRAINT `truck_lessee_6afe9da3_fk_lessee_id` FOREIGN 
 ALTER TABLE `orders` ADD CONSTRAINT `orders_lessee_5966d8d7_fk_lessee_id` FOREIGN KEY (`lessee`) REFERENCES `lessee` (`id`);
 ALTER TABLE `orders` ADD CONSTRAINT `orders_rental_613f13c3_fk_rental_id` FOREIGN KEY (`rental`) REFERENCES `rental` (`id`);
 ALTER TABLE `line` ADD CONSTRAINT `line_lessee_34f44738_fk_lessee_id` FOREIGN KEY (`lessee`) REFERENCES `lessee` (`id`);
-ALTER TABLE `line` ADD CONSTRAINT `line_rental_53529158_fk_rental_id` FOREIGN KEY (`rental`) REFERENCES `rental` (`id`);
+A--
+-- Add field password to lessee
+--
+ALTER TABLE `lessee` ADD COLUMN `password` varchar(256) DEFAULT b"'default password'" NOT NULL DEFAULT 'default password';
+ALTER TABLE `lessee` ALTER COLUMN `password` DROP DEFAULT;LTER TABLE `line` ADD CONSTRAINT `line_rental_53529158_fk_rental_id` FOREIGN KEY (`rental`) REFERENCES `rental` (`id`);
 COMMIT;
