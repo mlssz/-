@@ -18,7 +18,7 @@ CREATE TABLE `service` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `time`
 --
 -- Create model Truck
 --
-CREATE TABLE `truck` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `no` varchar(18) NOT NULL, `load` double precision NOT NULL DEFAULT 0, `width` double precision NOT NULL DEFAULT 0, `heigth` double precision NOT NULL DEFAULT 0, `length` double precision NOT NULL DEFAULT 0, `type` tinyint NOT NULL DEFAULT 0, `modelinfo` varchar(256) NULL, `remark` varchar(32) NULL);
+CREATE TABLE `truck` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `no` varchar(18) NOT NULL, `loads` double precision NOT NULL DEFAULT 0, `width` double precision NOT NULL DEFAULT 0, `heigth` double precision NOT NULL DEFAULT 0, `length` double precision NOT NULL DEFAULT 0, `type` tinyint NOT NULL DEFAULT 0, `moreinfo` varchar(256) NULL, `remark` varchar(32) NULL);
 --
 -- Create model User
 --
@@ -26,7 +26,7 @@ CREATE TABLE `user` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `account`
 --
 -- Create model Lessee
 --
-CREATE TABLE `lessee` (`id` integer NOT NULL PRIMARY KEY, `position_x` double precision NOT NULL DEFAULT 0, `position_y` double precision NOT NULL DEFAULT 0, `score` integer NOT NULL DEFAULT 0, `realname` varchar(128) NOT NULL, `ci` varchar(18) NULL);
+CREATE TABLE `lessee` (`id` integer NOT NULL PRIMARY KEY, `position_x` double precision NOT NULL DEFAULT 0, `position_y` double precision NOT NULL DEFAULT 0, `score` integer NOT NULL DEFAULT 0, `password` varchar(256) NOT NULL, `realname` varchar(128) NOT NULL, `ci` varchar(18) NULL);
 --
 -- Create model Rental
 --
@@ -74,9 +74,5 @@ ALTER TABLE `truck` ADD CONSTRAINT `truck_lessee_6afe9da3_fk_lessee_id` FOREIGN 
 ALTER TABLE `orders` ADD CONSTRAINT `orders_lessee_5966d8d7_fk_lessee_id` FOREIGN KEY (`lessee`) REFERENCES `lessee` (`id`);
 ALTER TABLE `orders` ADD CONSTRAINT `orders_rental_613f13c3_fk_rental_id` FOREIGN KEY (`rental`) REFERENCES `rental` (`id`);
 ALTER TABLE `line` ADD CONSTRAINT `line_lessee_34f44738_fk_lessee_id` FOREIGN KEY (`lessee`) REFERENCES `lessee` (`id`);
-A--
--- Add field password to lessee
---
-ALTER TABLE `lessee` ADD COLUMN `password` varchar(256) DEFAULT b"'default password'" NOT NULL DEFAULT 'default password';
-ALTER TABLE `lessee` ALTER COLUMN `password` DROP DEFAULT;LTER TABLE `line` ADD CONSTRAINT `line_rental_53529158_fk_rental_id` FOREIGN KEY (`rental`) REFERENCES `rental` (`id`);
+ALTER TABLE `line` ADD CONSTRAINT `line_rental_53529158_fk_rental_id` FOREIGN KEY (`rental`) REFERENCES `rental` (`id`);
 COMMIT;

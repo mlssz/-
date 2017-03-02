@@ -83,20 +83,20 @@
 ## truck
 
 ```org
-+-----------|--------------|------|-----|---------|----------------+
-| Field     | Type         | Null | Key | Default | Extra          |
-+-----------|--------------|------|-----|---------|----------------+
-| id        | int(11)      | NO   | PRI | NULL    | auto_increment |
-| no        | varchar(18)  | NO   |     | NULL    |                |
-| load      | double       | NO   |     | 0       |                |
-| width     | double       | NO   |     | 0       |                |
-| heigth    | double       | NO   |     | 0       |                |
-| length    | double       | NO   |     | 0       |                |
-| type      | tinyint(4)   | NO   |     | 0       |                |
-| modelinfo | varchar(256) | YES  |     | NULL    |                |
-| remark    | varchar(32)  | YES  |     | NULL    |                |
-| lessee    | int(11)      | NO   | MUL | NULL    |                |
-+-----------|--------------|------|-----|---------|----------------+
++----------|--------------|------|-----|---------|----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------|--------------|------|-----|---------|----------------+
+| id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| no       | varchar(18)  | NO   |     | NULL    |                |
+| loads    | double       | NO   |     | 0       |                |
+| width    | double       | NO   |     | 0       |                |
+| heigth   | double       | NO   |     | 0       |                |
+| length   | double       | NO   |     | 0       |                |
+| type     | tinyint(4)   | NO   |     | 0       |                |
+| moreinfo | varchar(256) | YES  |     | NULL    |                |
+| remark   | varchar(32)  | YES  |     | NULL    |                |
+| lessee   | int(11)      | NO   | MUL | NULL    |                |
++----------|--------------|------|-----|---------|----------------+
 ```
 
 ## auth_user 
