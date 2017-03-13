@@ -26,7 +26,7 @@ CREATE TABLE `user` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `account`
 --
 -- Create model Lessee
 --
-CREATE TABLE `lessee` (`id` integer NOT NULL PRIMARY KEY, `position_x` double precision NOT NULL DEFAULT 0, `position_y` double precision NOT NULL DEFAULT 0, `score` integer NOT NULL DEFAULT 0, `password` varchar(256) NOT NULL, `realname` varchar(128) NOT NULL, `ci` varchar(18) NULL);
+CREATE TABLE `lessee` (`id` integer NOT NULL PRIMARY KEY, `position_x` double precision NOT NULL DEFAULT 0, `position_y` double precision NOT NULL DEFAULT 0, `score` integer NOT NULL DEFAULT 3, `order_count` integer NOT NULL DEFAULT 0, `password` varchar(256) NOT NULL, `realname` varchar(128) NOT NULL, `ci` varchar(18) NULL);
 --
 -- Create model Rental
 --

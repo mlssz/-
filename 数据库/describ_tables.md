@@ -17,17 +17,18 @@
 ## lessee
 
 ```org
-+------------|--------------|------|-----|---------|-------+
-| Field      | Type         | Null | Key | Default | Extra |
-+------------|--------------|------|-----|---------|-------+
-| id         | int(11)      | NO   | PRI | NULL    |       |
-| position_x | double       | NO   |     | 0       |       |
-| position_y | double       | NO   |     | 0       |       |
-| score      | int(11)      | NO   |     | 0       |       |
-| realname   | varchar(128) | NO   |     | NULL    |       |
-| ci         | varchar(18)  | YES  |     | NULL    |       |
-| password   | varchar(256) | NO   |     | NULL    |       |
-+------------|--------------|------|-----|---------|-------+
++-------------|--------------|------|-----|---------|-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------|--------------|------|-----|---------|-------+
+| id          | int(11)      | NO   | PRI | NULL    |       |
+| position_x  | double       | NO   |     | 0       |       |
+| position_y  | double       | NO   |     | 0       |       |
+| score       | int(11)      | NO   |     | 3       |       |
+| order_count | int(11)      | NO   |     | 0       |       |
+| password    | varchar(256) | NO   |     | NULL    |       |
+| realname    | varchar(128) | NO   |     | NULL    |       |
+| ci          | varchar(18)  | YES  |     | NULL    |       |
++-------------|--------------|------|-----|---------|-------+
 ```
 
 ## Rental
