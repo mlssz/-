@@ -47,23 +47,25 @@
 ## orders
 
 ```org
-+------------|--------------|------|-----|-------------------|----------------+
-| Field      | Type         | Null | Key | Default           | Extra          |
-+------------|--------------|------|-----|-------------------|----------------+
-| id         | int(11)      | NO   | PRI | NULL              | auto_increment |
-| starttime  | datetime     | NO   |     | CURRENT_TIMESTAMP |                |
-| endtime    | datetime     | YES  |     | NULL              |                |
-| startplace | varchar(32)  | YES  |     | NULL              |                |
-| endplace   | varchar(32)  | YES  |     | NULL              |                |
-| fee        | double       | NO   |     | 0                 |                |
-| score      | int(11)      | NO   |     | 0                 |                |
-| accepttime | datetime     | YES  |     | NULL              |                |
-| finishtime | datetime     | YES  |     | NULL              |                |
-| remark     | varchar(256) | NO   |     | NULL              |                |
-| status     | tinyint(4)   | NO   |     | 0                 |                |
-| lessee     | int(11)      | YES  | MUL | NULL              |                |
-| rental     | int(11)      | NO   | MUL | NULL              |                |
-+------------|--------------|------|-----|-------------------|----------------+
++-------------+---------------+------+-----+-------------------+----------------+
+| Field       | Type          | Null | Key | Default           | Extra          |
++-------------+---------------+------+-----+-------------------+----------------+
+| id          | int(11)       | NO   | PRI | NULL              | auto_increment |
+| starttime   | datetime      | NO   |     | CURRENT_TIMESTAMP |                |
+| endtime     | datetime      | YES  |     | NULL              |                |
+| startplace  | varchar(32)   | YES  |     | NULL              |                |
+| startplacey | double        | NO   |     | 0                 |                |
+| startplacex | double        | NO   |     | 0                 |                |
+| endplace    | varchar(1024) | YES  |     | NULL              |                |
+| fee         | double        | NO   |     | 0                 |                |
+| score       | int(11)       | NO   |     | 0                 |                |
+| accepttime  | datetime      | YES  |     | NULL              |                |
+| finishtime  | datetime      | YES  |     | NULL              |                |
+| remark      | varchar(256)  | NO   |     | NULL              |                |
+| status      | tinyint(4)    | NO   |     | 0                 |                |
+| lessee      | int(11)       | YES  | MUL | NULL              |                |
+| rental      | int(11)       | NO   | MUL | NULL              |                |
++-------------+---------------+------+-----+-------------------+----------------+
 ```
 
 ## service

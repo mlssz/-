@@ -10,7 +10,7 @@ CREATE TABLE `line` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `startpla
 --
 -- Create model Orders
 --
-CREATE TABLE `orders` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `starttime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, `endtime` datetime NULL, `startplace` varchar(32) NULL, `endplace` varchar(32) NULL, `fee` double precision NOT NULL DEFAULT 0, `score` integer NOT NULL DEFAULT 0, `accepttime` datetime NULL, `finishtime` datetime NULL, `remark` varchar(256) NOT NULL, `status` tinyint NOT NULL DEFAULT 0);
+CREATE TABLE `orders` (`id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY, `starttime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, `endtime` datetime NULL, `startplace` varchar(32) NULL, `startplacey` double precision NOT NULL DEFAULT 0, `startplacex` double precision NOT NULL DEFAULT 0, `endplace` varchar(1024) NULL, `fee` double precision NOT NULL DEFAULT 0, `score` integer NOT NULL DEFAULT 0, `accepttime` datetime NULL, `finishtime` datetime NULL, `remark` varchar(256) NOT NULL, `status` tinyint NOT NULL DEFAULT 0);
 --
 -- Create model Service
 --
@@ -44,7 +44,7 @@ ALTER TABLE `service` ALTER COLUMN `offer` DROP DEFAULT;
 --
 -- Add field lessee to truck
 --
-ALTER TABLE `truck` ADD COLUMN `lessee` integer NOT NULL;
+ALTER TABLE `truck` ADD COLUMN `lessee` integer NOT NULL UNIQUE;
 ALTER TABLE `truck` ALTER COLUMN `lessee` DROP DEFAULT;
 --
 -- Add field lessee to orders
