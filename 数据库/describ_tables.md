@@ -47,9 +47,9 @@
 ## orders
 
 ```org
-+-------------+---------------+------+-----+-------------------+----------------+
++-------------|---------------|------|-----|-------------------|----------------+
 | Field       | Type          | Null | Key | Default           | Extra          |
-+-------------+---------------+------+-----+-------------------+----------------+
++-------------|---------------|------|-----|-------------------|----------------+
 | id          | int(11)       | NO   | PRI | NULL              | auto_increment |
 | starttime   | datetime      | NO   |     | CURRENT_TIMESTAMP |                |
 | endtime     | datetime      | YES  |     | NULL              |                |
@@ -61,11 +61,12 @@
 | score       | int(11)       | NO   |     | 0                 |                |
 | accepttime  | datetime      | YES  |     | NULL              |                |
 | finishtime  | datetime      | YES  |     | NULL              |                |
-| remark      | varchar(256)  | NO   |     | NULL              |                |
+| remark      | varchar(256)  | YES  |     | NULL              |                |
 | status      | tinyint(4)    | NO   |     | 0                 |                |
 | lessee      | int(11)       | YES  | MUL | NULL              |                |
 | rental      | int(11)       | NO   | MUL | NULL              |                |
-+-------------+---------------+------+-----+-------------------+----------------+
+| trucktype   | int(11)       | NO   |     | 0                 |                |
++-------------|---------------|------|-----|-------------------|----------------+
 ```
 
 ## service

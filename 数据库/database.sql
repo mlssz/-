@@ -75,4 +75,11 @@ ALTER TABLE `orders` ADD CONSTRAINT `orders_lessee_5966d8d7_fk_lessee_id` FOREIG
 ALTER TABLE `orders` ADD CONSTRAINT `orders_rental_613f13c3_fk_rental_id` FOREIGN KEY (`rental`) REFERENCES `rental` (`id`);
 ALTER TABLE `line` ADD CONSTRAINT `line_lessee_34f44738_fk_lessee_id` FOREIGN KEY (`lessee`) REFERENCES `lessee` (`id`);
 ALTER TABLE `line` ADD CONSTRAINT `line_rental_53529158_fk_rental_id` FOREIGN KEY (`rental`) REFERENCES `rental` (`id`);
+--
+-- Add field trucktype to orders
+--
+ALTER TABLE `orders` ADD COLUMN `trucktype` integer DEFAULT 0 NOT NULL;
+--
+-- Alter field status on orders
+--
 COMMIT;
